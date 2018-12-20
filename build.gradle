@@ -1,0 +1,58 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'pl.codecity'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-actuator')
+    implementation('org.springframework.boot:spring-boot-starter-cache')
+    implementation('org.springframework.boot:spring-boot-starter-data-rest')
+    implementation('org.springframework.boot:spring-boot-starter-mail')
+    implementation('org.springframework.boot:spring-boot-starter-security')
+    implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
+    implementation('org.springframework.boot:spring-boot-starter-validation')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    runtimeOnly('org.springframework.boot:spring-boot-devtools')
+    runtimeOnly('org.postgresql:postgresql')
+    compileOnly('org.projectlombok:lombok')
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.1.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+    compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.2'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+
+    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation('org.springframework.restdocs:spring-restdocs-mockmvc')
+    testImplementation('org.springframework.security:spring-security-test')
+}
